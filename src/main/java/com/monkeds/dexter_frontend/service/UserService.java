@@ -4,6 +4,7 @@ import java.net.URI;
 
 import javax.ws.rs.core.UriBuilder;
 
+import com.monkeds.dexter_frontend.entity.User;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
@@ -20,7 +21,11 @@ public class UserService {
 				.queryParam("email", email)
 				.queryParam("password", password);
 		ClientResponse response = webResource.accept("application/json").get(ClientResponse.class);
-		return response.getEntity(String.class);
+		
+		
+		
+		
+		return response.getEntity(User.class).getNick();
 	}
 	
 	private static URI getBaseURI() {
