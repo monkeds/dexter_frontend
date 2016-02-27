@@ -30,6 +30,17 @@ public class User{
 	}
 	
 	
+	
+	
+	
+	public User(String nick, String email, String password, String state) {
+		super();
+		this.nick = nick;
+		this.email = email;
+		this.password = password;
+		this.state = state;
+	}
+
 	public String getId() {
 		return id;
 	}

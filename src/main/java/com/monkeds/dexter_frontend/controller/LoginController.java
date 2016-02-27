@@ -59,6 +59,22 @@ public class LoginController {
 	}
 	
 	
+	@ResponseBody
+	@RequestMapping(value="ajax/signUp", method = RequestMethod.POST)
+	public String signUp(@RequestParam("email") String email, @RequestParam("password") String password) {
+		Object result=null;
+		 try {
+			result = userService.getByCredentials(email, password);
+		} catch (MkdBackendException e) {
+			result = new AjaxResult(e.getMessage()); 
+		} catch (Exception e) {
+			result = new AjaxResult("Ocurrio un error al intentar establecer la \n"
+					+ "conexion con el servidor. Por favor, intente mas tarde");
+		} 
+		return JsonManager.toJson(result);
+	}
+	
+	
 //	@ResponseBody
 //	@RequestMapping(value="ajax/loginO", method = RequestMethod.POST)
 //	public String loginO(@RequestParam("email") String email, @RequestParam("password") String password) {

@@ -102,7 +102,7 @@ function signUp(){
 	$.ajax({
         type: 'POST',
         data: {user:json},
-        url:  'chatController/ajax/signUp',
+        url:  'loginController/ajax/signUp',
 		dataType: 'json',
         async: true,
         success: function(result) {
