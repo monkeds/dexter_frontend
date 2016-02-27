@@ -1,0 +1,354 @@
+html,body{
+	margin: 0;
+	padding: 0;
+	overflow: auto;
+	height: 100%;
+	width: 100%;
+	
+}
+
+#loginContainer{
+	height: 100%;
+	width: 100%;
+    background-color: rgb(33,133,208);
+    overflow: hidden;
+}
+
+#loginContainer #frm_login{
+	width: 260px;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    margin-top: -106px;
+    margin-left: -130px;
+}
+
+#loginContainer #btn_openSignUp{
+	margin-top: 14px;
+}
+
+
+
+
+
+
+#principalContainer{
+	margin-top: 40px;
+}
+
+#principalContainer .cnt_contacts .contact{
+	padding: 6px;
+}
+
+#principalContainer .cnt_contacts .contact .content{
+	min-width: 250px;
+}
+
+#principalContainer .cnt_contacts .contact:active{
+/* 	efecto para el menu */
+}
+
+#principalContainer .cnt_contacts .contact .avatar{
+	width: 48px;
+	height: 48px;
+}
+
+#principalContainer .cnt_contacts .contact .avatar{
+	width: 48px;
+	height: 48px;
+}
+
+#principalContainer .cnt_contacts .contact h1{
+	font-size: 1.1em;
+	margin-top: 6px;
+	margin-bottom: 0;
+}
+#principalContainer .cnt_contacts .contact span{
+	color: rgb(180,180,180);
+}
+
+
+
+#chatContainer{
+	background-color: rgb(230,230,230);
+	height: 100% !important;
+	overflow: auto;
+}
+
+#chatContainer .menu.top{
+	height: 40px;
+}
+
+#chatContainer .contactMenu .contactInfo .header{
+	font-size: 1.2em;
+	font-weight: bold;	
+}
+#chatContainer .contactMenu .contactInfo span{
+	font-size: 1em;
+	color: rgba(0,0,0,0.7);
+}
+
+
+#chatContainer .messages{
+	padding-top: 40px;
+	padding-bottom: 60px;
+	width: 100%;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+#chatContainer .messages .event{
+	position: relative;
+    display: block;
+    text-align: center;
+    color: #c0c0c0;
+    height: 20px;
+    text-shadow: 7px 0px 0px #e5e5e5, 6px 0px 0px #e5e5e5, 5px 0px 0px #e5e5e5, 4px 0px 0px #e5e5e5, 3px 0px 0px #e5e5e5, 1px 0px 0px #e5e5e5, 1px 0px 0px #e5e5e5, 1px 0px 0px #e5e5e5, 0px 0px 0px #e5e5e5, -1px 0px 0px #e5e5e5, -2px 0px 0px #e5e5e5, -3px 0px 0px #e5e5e5, -4px 0px 0px #e5e5e5, -5px 0px 0px #e5e5e5, -6px 0px 0px #e5e5e5, -7px 0px 0px #e5e5e5;
+    box-shadow: inset 20px 0px 0px #e5e5e5, inset -20px 0px 0px #e5e5e5, inset 0px -1px 0px #d7d7d7;
+    line-height: 38px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    cursor: default;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+
+
+#chatContainer .messages {
+    list-style: none;
+}
+#chatContainer .messages li {
+    padding: 0.5rem;
+    overflow: hidden;
+    display: flex;
+}
+#chatContainer .messages .avatar {
+/*     width: 40px; */
+/*     height: 40px; */
+	width: 10px;
+    height:40px;
+    position: relative;
+    display: block;
+    z-index: 2;
+/*     border-radius: 100%; */
+/*     -webkit-border-radius: 100%; */
+/*     -moz-border-radius: 100%; */
+/*     -ms-border-radius: 100%; */
+/*     background-color: rgba(255,255,255,0.9); */
+}
+#chatContainer .messages .avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    background-color: rgba(255,255,255,0.9);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+
+#chatContainer .messages .other .msg {
+    order: 1;
+    border-top-left-radius: 0px;
+    box-shadow: -1px 2px 0px #D4D4D4;
+    margin-left: -10px;
+    
+    margin-right: 40px !important;
+}
+
+#chatContainer .messages .other .msg .from{
+    color: #5fb7d9;
+}
+
+#chatContainer .messages .other:before {
+    content: "";
+    position: relative;
+    top: 0px;
+    right: 0px;
+/*     left: 40px; */
+	left: 0px;
+    width: 0px;
+    height: 0px;
+    border: 5px solid #fff;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+}
+
+#chatContainer .messages .self {
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+#chatContainer .messages .self .msg {
+    order: 1;
+    border-bottom-right-radius: 0px;
+    box-shadow: 1px 2px 0px #D4D4D4;
+/*     background-color: rgb(191,236,255); */
+	background-color: rgb(229,247,255);
+	margin-left: 40px !important;
+}
+#chatContainer .messages .self .avatar {
+    order: 2;
+}
+#chatContainer .messages .self .avatar:after {
+    content: "";
+    position: relative;
+    display: inline-block;
+    bottom: -30px;
+/* 	bottom: 19px; */
+    right: 0px;
+    width: 0px;
+    height: 0px;
+/*     border: 5px solid #fff; */
+	border: 5px solid rgb(229,247,255);
+    border-right-color: transparent;
+    border-top-color: transparent;
+    box-shadow: 0px 2px 0px #D4D4D4;
+}
+
+#chatContainer .messages .msg {
+    background: white;
+    min-width: 50px;
+    padding: 10px;
+    border-radius: 2px;
+    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.07);
+}
+#chatContainer .messages .msg p {
+/*     font-size: 0.8rem; */
+    margin: 0 0 0.2rem 0;
+    color: #777;
+}
+#chatContainer .messages .msg img {
+    position: relative;
+    display: block;
+    width: 450px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px #eee;
+    transition: all .4s cubic-bezier(0.565, -0.260, 0.255, 1.410);
+    cursor: default;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+#chatContainer .messages .msg .from{
+	font-size: 0.9rem;
+	font-weight: bold;
+	margin-bottom: 8px;
+	display: block;
+}
+
+@media screen and (max-width: 800px) {
+    #chatContainer .messages .msg img {
+    width: 300px;
+}
+}
+@media screen and (max-width: 550px) {
+    #chatContainer .messages .msg img {
+    width: 200px;
+}
+}
+
+#chatContainer .messages .msg time {
+    font-size: 0.7rem;
+    color: #ccc;
+    margin-top: 3px;
+    float: right;
+    cursor: default;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+#chatContainer .messages .msg time:before{
+    content:"\f017";
+    color: #ddd;
+    font-family: FontAwesome;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+#chatContainer emoji{
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: -7px;
+    margin-right: 2px;
+    transform: translate3d(0px, 3px, 0px);
+}
+#chatContainer emoji.please{background-image: url(http://imgur.com/ftowh0s.png);}
+#chatContainer emoji.lmao{background-image: url(http://i.imgur.com/MllSy5N.png);}
+#chatContainer emoji.happy{background-image: url(http://imgur.com/5WUpcPZ.png);}
+#chatContainer emoji.pizza{background-image: url(http://imgur.com/voEvJld.png);}
+#chatContainer emoji.cryalot{background-image: url(http://i.imgur.com/UUrRRo6.png);}
+#chatContainer emoji.books{background-image: url(http://i.imgur.com/UjZLf1R.png);}
+#chatContainer emoji.moai{background-image: url(http://imgur.com/uSpaYy8.png);}
+#chatContainer emoji.suffocated{background-image: url(http://i.imgur.com/jfTyB5F.png);}
+#chatContainer emoji.scream{background-image: url(http://i.imgur.com/tOLNJgg.png);}
+#chatContainer emoji.hearth_blue{background-image: url(http://i.imgur.com/gR9juts.png);}
+#chatContainer emoji.funny{background-image: url(http://i.imgur.com/qKia58V.png);}
+
+@-webikt-keyframes pulse {
+  from { opacity: 0; }
+  to { opacity: 0.5; }
+}
+
+
+
+/* T Y P E */
+
+#chatContainer input.textarea {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    height: 50px;
+    z-index: 99;
+    background: #fafafa;
+    border: none;
+    outline: none;
+    padding-left: 55px;
+    padding-right: 55px;
+    color: #666;
+    font-weight: 400;
+}
+#chatContainer .emojis {
+    position: fixed;
+    display: block;
+    bottom: 8px;
+    left: 7px;
+    width: 34px;
+    height: 34px;
+    background-image: url(http://i.imgur.com/5WUpcPZ.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 100;
+    cursor: pointer;
+}
+#chatContainer .emojis:active {
+    opacity: 0.9;
+}
+
+
+
+
+
+
+/* UTILES */
+.hidden{
+	display: none;
+}
+
+.display{
+	display: block;
+}

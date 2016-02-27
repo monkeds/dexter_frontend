@@ -1,14 +1,18 @@
 package com.monkeds.dexter_frontend.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+import com.monkeds.dexter_frontend.entity.AjaxResult;
+import com.monkeds.dexter_frontend.entity.User;
+import com.monkeds.dexter_frontend.exception.MkdBackendException;
 import com.monkeds.dexter_frontend.service.UserService;
+import com.monkeds.dexter_frontend.util.JsonManager;
 
 @Controller("loginController")
 public class LoginController {
@@ -18,22 +22,60 @@ public class LoginController {
 	
 	@RequestMapping(value="/", method = RequestMethod.GET)
 	public String init(){
-		System.out.println("ingreso al metodo inicial");
 		return "index";
 	}
 	
-//	@RequestMapping(value="/login", method = RequestMethod.POST)
-//	public void login(HttpServletRequest request) {
-//		System.out.println("entro login "+request.getParameter("email"));
-//		System.out.println("entro login "+request.getParameter("password"));
+	@RequestMapping(value="/login", method = RequestMethod.POST)
+	public String login(ModelMap model,@RequestParam("email") String email, @RequestParam("password") String password) {
+		String message = "";
+		 try {
+			User user = userService.getByCredentials(email, password);
+			message = user.getNick();
+		} catch (MkdBackendException e) {
+			message = e.getMessage();
+		} catch (Exception e) {
+			e.printStackTrace();
+			message= "Ocurrio un error al intentar establecer la \n"
+					+ "conexion con el servidor. Por favor, intente mas tarde";
+		} 
+
+		model.put("message", message);
+		return "index";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="ajax/login", method = RequestMethod.POST)
+	public String login(@RequestParam("email") String email, @RequestParam("password") String password) {
+		Object result=null;
+		 try {
+			result = userService.getByCredentials(email, password);
+		} catch (MkdBackendException e) {
+			result = new AjaxResult(e.getMessage()); 
+		} catch (Exception e) {
+			result = new AjaxResult("Ocurrio un error al intentar establecer la \n"
+					+ "conexion con el servidor. Por favor, intente mas tarde");
+		} 
+		return JsonManager.toJson(result);
+	}
+	
+	
+//	@ResponseBody
+//	@RequestMapping(value="ajax/loginO", method = RequestMethod.POST)
+//	public String loginO(@RequestParam("email") String email, @RequestParam("password") String password) {
+//		Object result=null;
+//		 try {
+//			result = userService.getByCredentials(email, password);
+//		} catch (MkdBackendException e) {
+//			result = new AjaxResult("204", e.getMessage()); 
+//		} catch (Exception e) {
+//			result = new AjaxResult("204","Ocurrio un error al intentar establecer la \n"
+//					+ "conexion con el servidor. Por favor, intente mas tarde");
+//		} 
+//
+//		return new Gson().toJson(result);
 //	}
 	
-	@RequestMapping(value="/login", method = RequestMethod.POST)
-	public void login(@RequestParam("email") String email, @RequestParam("password") String password) {
-		System.out.println("entro login "+email+" / "+password);
-		String user = userService.getByCredentials(email, password);
-		System.out.println(user);
-	}
+	
 	
 //	ESTO ES VALIDO
 //	@RequestMapping(value="/login", method = RequestMethod.POST)
