@@ -60,15 +60,18 @@ public class LoginController {
 	
 	
 	@ResponseBody
-	@RequestMapping(value="ajax/signUp", method = RequestMethod.POST)
-	public String signUp(@RequestParam("email") String email, @RequestParam("password") String password) {
-		Object result=null;
+	@RequestMapping(value="ajax/signUp", method = RequestMethod.POST, headers="Accept=application/json")
+	public String signUp(@RequestParam("email") String email, @RequestParam("password") String password,@RequestParam("nick") String nick) {
+		Object result = null;
 		 try {
-			result = userService.getByCredentials(email, password);
+			 User user = new User(nick,email,password, null);
+			 String val = userService.insert(user);
+			 result = new AjaxResult(val); 
 		} catch (MkdBackendException e) {
 			result = new AjaxResult(e.getMessage()); 
 		} catch (Exception e) {
-			result = new AjaxResult("Ocurrio un error al intentar establecer la \n"
+			e.printStackTrace();
+			result= new AjaxResult("Ocurrio un error al intentar establecer la \n"
 					+ "conexion con el servidor. Por favor, intente mas tarde");
 		} 
 		return JsonManager.toJson(result);

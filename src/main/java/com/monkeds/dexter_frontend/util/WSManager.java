@@ -49,7 +49,7 @@ public class WSManager {
 	
 	
 	@SuppressWarnings("unchecked")
-	public static Object postObject(WebResource webResource, Object object) throws Exception{
+	public static Object postObject(WebResource webResource, Object object, Class classType) throws Exception{
 		Form form = objetToForm(object);		
 		ClientResponse response = webResource.post(ClientResponse.class,form);		
 		if(response.getStatus()!=200){
@@ -57,7 +57,11 @@ public class WSManager {
 		}else{
 			JsonObject jsonObject =  JsonManager.stringToJsonObject(response.getEntity(String.class));
 			if(jsonObject.get("code").getAsInt() ==200){
-				return jsonObject.get("message").getAsString();
+				if(classType == String.class){
+					return jsonObject.get("message").getAsString();
+				}else{
+					return JsonManager.jsonObjectToObject(jsonObject, classType);
+				}
 			}else{
 				throw new MkdBackendException(jsonObject.get("message").getAsString());
 			}

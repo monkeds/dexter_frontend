@@ -86,7 +86,7 @@ function login(email,password){
         	}
         },
         error: function(jqXHR,exception) { 
-        	showMessage('INFO','Error al ingresar',formatErrorMessage(jqXHR,exception));
+        	showMessage('ERROR','Error al ingresar',formatErrorMessage(jqXHR,exception));
 //        	alert("ERROR "+formatErrorMessage(jqXHR,exception))
         },
         beforeSend: function () {  },           
@@ -98,20 +98,26 @@ function login(email,password){
 function signUp(){
 	var formSelector = '#frm_signUp';
 	var json = JSON.stringify($(formSelector).serializeObject());
-	console.log(json);
+	var json =  JSON.parse(json);
+//	var data = {email : "12", password : "12", nick :"12" };
+//	console.log("json "+json+" / "+json.to);
+//	console.log("data "+data);
 	$.ajax({
         type: 'POST',
-        data: {user:json},
-        url:  'loginController/ajax/signUp',
+//        data: {user:json},
+//        data: {email : "12", password : "12", nick :"12" },
+        data: json,
+        url:  'ajax/signUp',
 		dataType: 'json',
         async: true,
         success: function(result) {
-        	console.log("success");
+        	console.log("SUCCESS "+result.ajaxMessage);
+        	showMessage('INFO','Registro exitoso',result.ajaxMessage);
         	clearForm(formSelector);
         	closeModalSignUp();
         },
         error: function(jqXHR,exception) {
-        	showMessage('INFO','Error al registrar usuario ',formatErrorMessage(jqXHR,exception));
+        	showMessage('ERROR','Error al registrar usuario ',formatErrorMessage(jqXHR,exception));
         },
         beforeSend: function () {  },           
         complete: function () {  }, 

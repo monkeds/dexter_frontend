@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.monkeds.dexter_frontend.constant.WSConstants;
+import com.monkeds.dexter_frontend.entity.AjaxResult;
 import com.monkeds.dexter_frontend.entity.User;
 import com.monkeds.dexter_frontend.exception.MkdBackendException;
 import com.monkeds.dexter_frontend.util.WSManager;
@@ -34,7 +35,7 @@ public class UserService {
 	public String insert(User user) throws Exception{
 		Client client = Client.create();
 		WebResource webResource = client.resource(WSConstants.ROOT_URI).path("users");
-		return (String) WSManager.postObject(webResource, user);
+		return (String) WSManager.postObject(webResource, user, String.class);
 //		
 //		
 //		
